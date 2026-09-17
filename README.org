@@ -3,6 +3,7 @@
 This repository contains:
 - ~starter/~ :: code for SpeechState that you can start with 
 - ~rag/~ :: code for RAG that you can start with 
+- ~sisu/~ :: code for SISU
 - ~labs/~ :: assignments for the course
 - ~tutorials/~ :: tutorials  
 
