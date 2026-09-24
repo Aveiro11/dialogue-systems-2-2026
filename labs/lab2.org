@@ -80,7 +80,7 @@ You can make it into a [[https://qdrant.tech/documentation/manage-data/payload/]
 
 
 * Troubleshooting using logs
-Logs can be very useful when troubleshooting the implementation. If you test live in the browser, you can look at the console in the web developer tools. In automated testing (~yarn test~), log entries are printed to the terminal; you can also pipe them to a file with ~yarn test 2>&1 > test.log~. Feel free to add your own log entries in your code, with ~console.log(...)~.
+Logs can be very useful when troubleshooting the implementation. If you test live in the browser, you can look at the console in the web developer tools. In automated testing (~npm run test~), log entries are printed to the terminal; you can also pipe them to a file with ~npm run test 2>&1 > test.log~. Feel free to add your own log entries in your code, with ~console.log(...)~.
 
 * Submission
 Report the lab by submitting a link to a *new* pull request containing your solutions, including automated tests (in ~test/dme.test.ts~).

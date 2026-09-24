@@ -4,6 +4,7 @@ This repository contains:
 - ~starter/~ :: code for SpeechState that you can start with 
 - ~rag/~ :: code for RAG that you can start with 
 - ~sisu/~ :: code for SISU
+- ~furhat/~ :: code for Furhat
 - ~labs/~ :: assignments for the course
 - ~tutorials/~ :: tutorials  
 
@@ -12,7 +13,3 @@ This repository contains:
 Never commit any API keys to the repository. Never deploy front-end application that uses API keys on a public resource.
 #+end_quote
   
-* Useful information
-** TBD Tunnel ollama
-** TBD Azure Speech proxy
-

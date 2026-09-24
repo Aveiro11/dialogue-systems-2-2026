@@ -1,0 +1,47 @@
+#+TITLE: Lab 3. Social robotics
+
+Relevant documentation:
+- XState docs: https://stately.ai/docs/xstate
+- Furhat docs: https://docs.furhat.io/
+- Furhat Remote API docs: https://docs.furhat.io/deprecated/remote-api
+
+
+
+* Getting started: 
+
+1. Create [[https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging][a new branch]] and call it ~lab-3~.
+2. Register at https://furhat.io/ (“Get SDK”) and install the SDK and virtual Furhat.
+3. Launch virtual Furhat and Start Remote API.
+4. You will use starter code in the ~/furhat/~ folder based on XState (see ~README.md~ file with instructions how to run it).
+5. If you wish you can use other ways to control Furhat, namely Kotlin Skill API.
+   
+* Part A:
+
+1. Implement user-tracking for Furhat to attend to the user.
+2. Implement a very basic dialogue (for instance: Furhat is saying something, then starts listening, then saying back what the user has just said).
+3. Implement LED light indication of speaking/listening behaviour
+   analogously to Irfan et al. (2025) paper.
+4. Create one new gesture for Furhat of your liking (e.g. eye-rolling,
+   smiling, eye and head movements).
+5. Include the gesture as part of the short demonstration dialogue.
+6. Create another gesture for Furhat with audio sound. You can also
+   add audio to one of the existing gestures (e.g. anger).
+
+* Part VG-1 (1 extra VG point)
+Intergrate Furhat with your previous work so that it can be either
+(you only choose 1 option):
+1. an interface to LLM/RAG-based dialogue system (continue with Lab1)
+2. an interface to SISU (continue with Lab2)
+
+
+* Part VG-2 (1 extra VG point)
+
+#+begin_quote
+[!IMPORTANT]
+Starter code for this part is under construction.
+#+end_quote
+
+Implement a proof-of-concept XState interface that uses new [[https://docs.furhat.io/realtime-api/intro][Furhat Realtime API]], so that it is possible to plug it in to your application (~dm.ts~) instead of SpeechState.
+
+* Submission
+Report the lab by submitting a link to a *new* pull request containing your solutions.
