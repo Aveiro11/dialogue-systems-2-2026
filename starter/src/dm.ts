@@ -3,6 +3,7 @@ import { Settings, speechstate } from "speechstate";
 import { KEY } from "./credentials";
 import { DMContext, DMEvents, Message } from "./types";
 import OpenAI from "openai";
+import { QdrantClient } from "@qdrant/js-client-rest";
 
 const REGION = "swedencentral";
 
@@ -17,6 +18,13 @@ const azureCredentials = {
   key: KEY,
 };
 
+const qdrant = new QdrantClient({ host: "localhost", port: 6333 });
+const RAG_COLLECTION = "studentSupport"
+
+const embed = async (input: string) =>
+  openai.embeddings
+    .create({ model: "qwen3-embedding", input, dimensions: 384 })
+    .then((result) => result.data[0].embedding);
 /** backup: Azure access via FLoV proxy
 const azureProxyCredentials = {
   proxyUrl: "https://rndserv.flov.gu.se:4000/api/token",
@@ -34,6 +42,20 @@ const settings: Settings = {
   bargeIn: false,
 };
 
+const BASE_SYSTEM_PROMPT =
+  "You are a helpful voice assistant for Gothenburg University students. " +
+  "Use the reference information below if it's relevant to the user's question. " +
+  "If it's not relevant, ignore it and answer normally. Keep responses brief and conversational.";
+
+function buildAugmentedMessages(context: DMContext): Message[] {
+  const systemMessage: Message = {
+    role: "system",
+    content: context.ragContext
+      ? `${BASE_SYSTEM_PROMPT}\n\nREFERENCE INFORMATION:\n${context.ragContext}`
+      : BASE_SYSTEM_PROMPT,
+  };
+  return [systemMessage, ...context.messages.slice(1)];
+}
 // interface GrammarEntry {
 //   person?: string;
 //   day?: string;
@@ -55,11 +77,11 @@ const settings: Settings = {
 //   return utterance.toLowerCase() in grammar;
 // }
 
-const SYSTEM_PROMPT: Message = {
-  role: "system",
-  content:
-    "You are a voice assistant",
-};
+// const SYSTEM_PROMPT: Message = {
+//   role: "system",
+//   content:
+//     "You are a voice assistant",
+// };
 
 const dmMachine = setup({
   types: {
@@ -89,13 +111,22 @@ const dmMachine = setup({
       });
       return response.choices[0].message.content ?? "";
     }),
+    queryRAG: fromPromise<string, string>(async ({ input }) => {
+      const embedding = await embed(input); // embeds the user's utterance
+      const result = await qdrant.query(RAG_COLLECTION, {
+        query: embedding,
+        with_payload: true,
+        limit: 3, // top 3 most relevant chunks
+      });
+      return result.points.map((p: any) => p.payload.text).join("\n\n---\n\n");
+    }),
   },
 }).createMachine({
   context: ({ spawn }) => ({
     spstRef: spawn(speechstate, { input: settings }),
     lastResult: null,
-    // Messages array, seeded with the system prompt.
-    messages: [SYSTEM_PROMPT],
+    messages: [{ role: "system", content: BASE_SYSTEM_PROMPT }],
+    ragContext: "",
   }),
   id: "DM",
   initial: "Prepare",
@@ -190,37 +221,46 @@ const dmMachine = setup({
           on: {
             RECOGNISED: {
               actions: assign(({ context, event }) => ({
-                messages: [
-                  ...context.messages,
-                  { role: "user", content: event.value[0].utterance } as Message,
-                ],
+                messages: [...context.messages, { role: "user", content: event.value[0].utterance } as Message],
               })),
             },
-            LISTEN_COMPLETE: "ChatCompletion",
-            ASR_NOINPUT: {
-              target: "NoInput",
-            },
+            LISTEN_COMPLETE: "Retrieve", 
+            ASR_NOINPUT: { target: "NoInput" },
           },
         },
 
         NoInput: {
           entry: {
             type: "spst.speak",
-            params: { utterance: "I didn't hear you, could you repeat that?" },
+            params: { utterance: "Could you repeat that?" },
           },
           on: { SPEAK_COMPLETE: "Ask" },
         },
+
+        Retrieve: {
+          entry: assign({ ragContext: "" }),
+          invoke: {
+            src: "queryRAG",
+            input: ({ context }) => context.messages[context.messages.length - 1].content, // latest utterance
+            onDone: {
+              target: "ChatCompletion",
+              actions: assign(({ event }) => ({ ragContext: event.output })),
+            },
+            onError: {
+              target: "ChatCompletion", // still answer, just without retrieved context
+              actions: ({ event }) => console.error("RAG retrieval failed:", event.error),
+            },
+          },
+        },
+
         ChatCompletion: {
           invoke: {
             src: "chatCompletion",
-            input: ({ context }) => context.messages,
+            input: ({ context }) => buildAugmentedMessages(context), 
             onDone: {
               target: "Speaking",
               actions: assign(({ context, event }) => ({
-                messages: [
-                  ...context.messages,
-                  { role: "assistant", content: event.output } as Message,
-                ],
+                messages: [...context.messages, { role: "assistant", content: event.output } as Message],
               })),
             },
             onError: {
