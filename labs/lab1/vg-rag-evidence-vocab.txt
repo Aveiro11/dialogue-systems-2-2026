@@ -1,0 +1,119 @@
+=== Query: feel good (spoken/natural form) ===
+[
+  {
+    id: 'df96e27f-c155-42ed-9f26-4ec005f9066f',
+    version: 18,
+    score: 0.56695336,
+    payload: {
+      text: 'Applying for and being granted study support',
+      source: 'page-017-Disability study support.txt',
+      chunkIndex: 18
+    }
+  },
+  {
+    id: '67a0b4cf-30c8-43df-8911-7588e9e92850',
+    version: 14,
+    score: 0.5567874,
+    payload: {
+      text: 'Examine the statements and reasoning that your text presents. Are they well substantiated? That is, do you refer to relevant sources? Review your sources and make sure they are credible and used correctly.',
+      source: 'page-013-Revising your text.txt',
+      chunkIndex: 2
+    }
+  },
+  {
+    id: 'dcacbbf5-ef6d-46c2-b5ce-3dc995fba474',
+    version: 19,
+    score: 0.51846004,
+    payload: {
+      text: 'Online placement test',
+      source: 'page-018-Basic Swedish for international students.txt',
+      chunkIndex: 18
+    }
+  },
+  {
+    id: '14b9f049-b3a9-4a59-bbbf-029c469ca7a1',
+    version: 1,
+    score: 0.5017042,
+    payload: {
+      text: 'At the University Church you can talk about everything that is going on in your life, whenever you need to. You are welcome regardless of your beliefs. The counselling is free of charge, no records are kept and those who work at the University Church are bound by a duty of confidentiality.',
+      source: 'page-000-Student healthcare.txt',
+      chunkIndex: 15
+    }
+  },
+  {
+    id: '254e3295-585e-4afe-bd0f-0cfa89bf39ee',
+    version: 13,
+    score: 0.49373332,
+    payload: {
+      text: 'It can be difficult to get started with writing if you are too focused on the finished text too early in the writing process. While writing your thoughts down, try to be as uncritical as possible about your writing. ‘Thinking writing’ helps you come up with what you want to say, and not how to say it.',
+      source: 'page-012-Writing an academic text.txt',
+      chunkIndex: 8
+    }
+  }
+]
+
+=== Query: Feelgood (written/proper noun form) ===
+[
+  {
+    id: 'df96e27f-c155-42ed-9f26-4ec005f9066f',
+    version: 18,
+    score: 0.54860544,
+    payload: {
+      text: 'Applying for and being granted study support',
+      source: 'page-017-Disability study support.txt',
+      chunkIndex: 18
+    }
+  },
+  {
+    id: 'dcacbbf5-ef6d-46c2-b5ce-3dc995fba474',
+    version: 19,
+    score: 0.5194087,
+    payload: {
+      text: 'Online placement test',
+      source: 'page-018-Basic Swedish for international students.txt',
+      chunkIndex: 18
+    }
+  },
+  {
+    id: '67a0b4cf-30c8-43df-8911-7588e9e92850',
+    version: 14,
+    score: 0.4863485,
+    payload: {
+      text: 'Examine the statements and reasoning that your text presents. Are they well substantiated? That is, do you refer to relevant sources? Review your sources and make sure they are credible and used correctly.',
+      source: 'page-013-Revising your text.txt',
+      chunkIndex: 2
+    }
+  },
+  {
+    id: '14b9f049-b3a9-4a59-bbbf-029c469ca7a1',
+    version: 1,
+    score: 0.482388,
+    payload: {
+      text: 'At the University Church you can talk about everything that is going on in your life, whenever you need to. You are welcome regardless of your beliefs. The counselling is free of charge, no records are kept and those who work at the University Church are bound by a duty of confidentiality.',
+      source: 'page-000-Student healthcare.txt',
+      chunkIndex: 15
+    }
+  },
+  {
+    id: 'd0b9be88-f17a-473f-9d96-7a6a849fa1b5',
+    version: 1,
+    score: 0.48157313,
+    payload: {
+      text: 'You can contact Student healthcare (Feelgood) by email or by phone.\n' +
+        'student.goteborg@feelgood.se\n' +
+        '031-786 43 22 (Monday to Friday, 8 am to 5 pm)\n' +
+        'If you have a Swedish personal identity number and BankID, you can use the Feelgood app. Download from\n' +
+        'App Store\n' +
+        'or\n' +
+        'Google Play\n' +
+        '.\n' +
+        'Cancellations\n' +
+        'Cancellations\n' +
+        'must be made by phone or e-mail at least 24 hours before the scheduled visit. No-shows will be charged. To cancel, call 031-786 43 22 (on weekdays) or email\n' +
+        'student.goteborg@feelgood.se\n' +
+        '.',
+      source: 'page-000-Student healthcare.txt',
+      chunkIndex: 5
+    }
+  }
+]

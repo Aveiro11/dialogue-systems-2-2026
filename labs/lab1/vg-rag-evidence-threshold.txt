@@ -1,0 +1,198 @@
+=== Query: Feelgood phone number (specific, on-topic) ===
+[
+  {
+    id: 'd0b9be88-f17a-473f-9d96-7a6a849fa1b5',
+    version: 1,
+    score: 0.67314637,
+    payload: {
+      text: 'You can contact Student healthcare (Feelgood) by email or by phone.\n' +
+        'student.goteborg@feelgood.se\n' +
+        '031-786 43 22 (Monday to Friday, 8 am to 5 pm)\n' +
+        'If you have a Swedish personal identity number and BankID, you can use the Feelgood app. Download from\n' +
+        'App Store\n' +
+        'or\n' +
+        'Google Play\n' +
+        '.\n' +
+        'Cancellations\n' +
+        'Cancellations\n' +
+        'must be made by phone or e-mail at least 24 hours before the scheduled visit. No-shows will be charged. To cancel, call 031-786 43 22 (on weekdays) or email\n' +
+        'student.goteborg@feelgood.se\n' +
+        '.',
+      source: 'page-000-Student healthcare.txt',
+      chunkIndex: 5
+    }
+  },
+  {
+    id: 'df96e27f-c155-42ed-9f26-4ec005f9066f',
+    version: 18,
+    score: 0.5883533,
+    payload: {
+      text: 'Applying for and being granted study support',
+      source: 'page-017-Disability study support.txt',
+      chunkIndex: 18
+    }
+  },
+  {
+    id: '75a3b2e6-b469-4fc3-b07f-024855e088e0',
+    version: 9,
+    score: 0.585006,
+    payload: {
+      text: 'This is frequently found in the Contact, Help or About pages.',
+      source: 'page-008-The structured search process.txt',
+      chunkIndex: 37
+    }
+  },
+  {
+    id: '14b9f049-b3a9-4a59-bbbf-029c469ca7a1',
+    version: 1,
+    score: 0.57439077,
+    payload: {
+      text: 'At the University Church you can talk about everything that is going on in your life, whenever you need to. You are welcome regardless of your beliefs. The counselling is free of charge, no records are kept and those who work at the University Church are bound by a duty of confidentiality.',
+      source: 'page-000-Student healthcare.txt',
+      chunkIndex: 15
+    }
+  },
+  {
+    id: '84099b0d-78aa-4d8f-b037-126a7f6b501a',
+    version: 4,
+    score: 0.5696594,
+    payload: {
+      text: 'Servicecenter can help you with\n' +
+        "Servicecenter can help you navigate the University of Gothenburg -  our buildings as well as our organisation. If you don't know who to contact with a question, contact Servicecenter and we will guide you.\n" +
+        'Servicecenter can also help you with:',
+      source: 'page-003-Servicecenter.txt',
+      chunkIndex: 1
+    }
+  }
+]
+
+=== Query: how do I get help with my studies (vague, on-topic) ===
+[
+  {
+    id: 'df96e27f-c155-42ed-9f26-4ec005f9066f',
+    version: 18,
+    score: 0.731715,
+    payload: {
+      text: 'Applying for and being granted study support',
+      source: 'page-017-Disability study support.txt',
+      chunkIndex: 18
+    }
+  },
+  {
+    id: 'bc10a53c-ca93-4423-9aa3-2e364dc4f8ea',
+    version: 20,
+    score: 0.69120073,
+    payload: {
+      text: 'New student – get started with the library\n' +
+        'Get started with the library as a distance student',
+      source: 'page-019-The University Library.txt',
+      chunkIndex: 5
+    }
+  },
+  {
+    id: 'e99b2414-686c-4877-9675-e23aac0d1e69',
+    version: 2,
+    score: 0.64602566,
+    payload: {
+      text: 'Which courses can I apply for?\n' +
+        'How can I combine courses for a degree?\n' +
+        'How can exchange studies fit into my education?\n' +
+        'What opportunities do I have to do an internship?\n' +
+        'How can I plan for my studies?\n' +
+        'How do I study effectively?\n' +
+        'What skills will I gain through my studies?\n' +
+        'What can I work on in the future?\n' +
+        'How can I complete a course that I have previously started?',
+      source: 'page-001-Study guidance.txt',
+      chunkIndex: 3
+    }
+  },
+  {
+    id: 'd5d64f9d-5095-4cb3-bed0-aeef49163777',
+    version: 2,
+    score: 0.63148135,
+    payload: {
+      text: 'Need help with study administration?\n' +
+        'If you need help with practical matters concerning your education, like registering for a course, certificates or where to pick up your examinations, you should contact the study administrator for your education. You can find contact information on your departments page.\n' +
+        '\n' +
+        '\n' +
+        'Contact\n' +
+        'Find you way on the University\n' +
+        'Faculties and departments\n' +
+        'Security at the University\n' +
+        'Processing of your personal data\n' +
+        'Accessibility statement\n' +
+        'Cookie settings',
+      source: 'page-001-Study guidance.txt',
+      chunkIndex: 4
+    }
+  },
+  {
+    id: '5cdfa85f-4192-4980-aea5-3226842c5f44',
+    version: 18,
+    score: 0.62607646,
+    payload: {
+      text: 'As a student you are responsible for ensuring that your studies and your study situation work well.\n' +
+        'Here are a few tips to keep in mind:\n' +
+        'You are responsible for applying for study support in good time.\n' +
+        'You are responsible for informing your department that you have been granted study support and for contacting the study counsellor or equivalent person to obtain information about procedures for study support in your programme or course.',
+      source: 'page-017-Disability study support.txt',
+      chunkIndex: 28
+    }
+  }
+]
+
+=== Query: what's the weather like today (off-topic) ===
+[
+  {
+    id: 'dcacbbf5-ef6d-46c2-b5ce-3dc995fba474',
+    version: 19,
+    score: 0.56787467,
+    payload: {
+      text: 'Online placement test',
+      source: 'page-018-Basic Swedish for international students.txt',
+      chunkIndex: 18
+    }
+  },
+  {
+    id: 'df96e27f-c155-42ed-9f26-4ec005f9066f',
+    version: 18,
+    score: 0.5152234,
+    payload: {
+      text: 'Applying for and being granted study support',
+      source: 'page-017-Disability study support.txt',
+      chunkIndex: 18
+    }
+  },
+  {
+    id: '8e23d53e-d889-4030-ae41-12f87fc62a43',
+    version: 19,
+    score: 0.5033023,
+    payload: {
+      text: '. Also, check your audio settings since the test includes a listening section.',
+      source: 'page-018-Basic Swedish for international students.txt',
+      chunkIndex: 20
+    }
+  },
+  {
+    id: 'bc10a53c-ca93-4423-9aa3-2e364dc4f8ea',
+    version: 20,
+    score: 0.47931957,
+    payload: {
+      text: 'New student – get started with the library\n' +
+        'Get started with the library as a distance student',
+      source: 'page-019-The University Library.txt',
+      chunkIndex: 5
+    }
+  },
+  {
+    id: '0aa0f703-294e-4bc5-8463-bf1d0100432c',
+    version: 15,
+    score: 0.47175157,
+    payload: {
+      text: 'https://www.umu.se/globalassets/organisation/utan-fakultetstillhorighet/bibliotek/soka-skriva-och-studera/muntlig-presentation.pdf',
+      source: 'page-014-Giving an oral presentation.txt',
+      chunkIndex: 14
+    }
+  }
+]

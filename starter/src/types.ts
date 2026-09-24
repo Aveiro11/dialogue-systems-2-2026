@@ -11,6 +11,7 @@ export interface DMContext {
   lastResult: Hypothesis[] | null;
   messages: Message[];
   ragContext: string;
+  noInputCount: number; // tracks consecutive silence timeouts
 }
 
 export type DMEvents = SpeechStateExternalEvent | { type: "CLICK" } | { type: "DONE" };

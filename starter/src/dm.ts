@@ -112,13 +112,22 @@ const dmMachine = setup({
       return response.choices[0].message.content ?? "";
     }),
     queryRAG: fromPromise<string, string>(async ({ input }) => {
-      const embedding = await embed(input); // embeds the user's utterance
+      const embedding = await embed(input);
       const result = await qdrant.query(RAG_COLLECTION, {
         query: embedding,
         with_payload: true,
-        limit: 3, // top 3 most relevant chunks
+        limit: 5,
       });
-      return result.points.map((p: any) => p.payload.text).join("\n\n---\n\n");
+
+      const SCORE_THRESHOLD = 0.4;
+      const filtered = result.points.filter((p: any) => p.score >= SCORE_THRESHOLD); // NEW: drop weak matches
+
+      if (filtered.length === 0) {
+        return "";
+        //no confident matches — let the LLM answer without RAG context
+      }
+
+      return filtered.map((p: any) => p.payload.text).join("\n\n---\n\n");
     }),
   },
 }).createMachine({
@@ -127,6 +136,7 @@ const dmMachine = setup({
     lastResult: null,
     messages: [{ role: "system", content: BASE_SYSTEM_PROMPT }],
     ragContext: "",
+    noInputCount: 0,
   }),
   id: "DM",
   initial: "Prepare",
@@ -222,18 +232,45 @@ const dmMachine = setup({
             RECOGNISED: {
               actions: assign(({ context, event }) => ({
                 messages: [...context.messages, { role: "user", content: event.value[0].utterance } as Message],
+                noInputCount: 0,
+                //reset on recognition
               })),
             },
-            LISTEN_COMPLETE: "Retrieve", 
-            ASR_NOINPUT: { target: "NoInput" },
+            LISTEN_COMPLETE: "Retrieve",
+            ASR_NOINPUT: [
+              // VG: guard-based transition
+              {
+                target: "NoInputRepeat",
+                guard: ({ context }) => context.noInputCount >= 2,
+              },
+              { target: "NoInput" },
+            ],
           },
         },
 
         NoInput: {
-          entry: {
-            type: "spst.speak",
-            params: { utterance: "Could you repeat that?" },
-          },
+          entry: [
+            assign(({ context }) => ({ noInputCount: context.noInputCount + 1 })),
+            {
+              type: "spst.speak",
+              params: { utterance: "Could you repeat that?" },
+            },
+          ],
+          on: { SPEAK_COMPLETE: "Ask" },
+        },
+
+        //fires after 2+ consecutive silences
+        NoInputRepeat: {
+          entry: [
+            assign({ noInputCount: 0 }),
+            {
+              type: "spst.speak",
+              params: {
+                utterance:
+                  "I'm still not hearing anything. I'll keep listening whenever you're ready — just say something to continue.",
+              },
+            },
+          ],
           on: { SPEAK_COMPLETE: "Ask" },
         },
 
@@ -241,13 +278,21 @@ const dmMachine = setup({
           entry: assign({ ragContext: "" }),
           invoke: {
             src: "queryRAG",
-            input: ({ context }) => context.messages[context.messages.length - 1].content, // latest utterance
+            input: ({ context }) => {
+              // building query from last 2 user turns instead of just the latest one
+              const recentUserMessages = context.messages
+                .filter((m) => m.role === "user")
+                .slice(-2)
+                .map((m) => m.content)
+                .join(" ");
+              return recentUserMessages;
+            },
             onDone: {
               target: "ChatCompletion",
               actions: assign(({ event }) => ({ ragContext: event.output })),
             },
             onError: {
-              target: "ChatCompletion", // still answer, just without retrieved context
+              target: "ChatCompletion",
               actions: ({ event }) => console.error("RAG retrieval failed:", event.error),
             },
           },
@@ -256,7 +301,7 @@ const dmMachine = setup({
         ChatCompletion: {
           invoke: {
             src: "chatCompletion",
-            input: ({ context }) => buildAugmentedMessages(context), 
+            input: ({ context }) => buildAugmentedMessages(context),
             onDone: {
               target: "Speaking",
               actions: assign(({ context, event }) => ({

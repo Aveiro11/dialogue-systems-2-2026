@@ -1,0 +1,143 @@
+=== Query: what's the phone number ===
+[
+  {
+    id: '75a3b2e6-b469-4fc3-b07f-024855e088e0',
+    version: 9,
+    score: 0.5485262,
+    payload: {
+      text: 'This is frequently found in the Contact, Help or About pages.',
+      source: 'page-008-The structured search process.txt',
+      chunkIndex: 37
+    }
+  },
+  {
+    id: 'bc1cce71-6413-491b-8037-5a36f322e1ef',
+    version: 1,
+    score: 0.5440023,
+    payload: {
+      text: '112 is the emergency number for ambulance, police and rescue, and fire brigade. You will be asked to explain what has happened and to state your location. There is an emergency room at Sahlgrenska University Hospital.',
+      source: 'page-000-Student healthcare.txt',
+      chunkIndex: 20
+    }
+  },
+  {
+    id: 'd0b9be88-f17a-473f-9d96-7a6a849fa1b5',
+    version: 1,
+    score: 0.54056776,
+    payload: {
+      text: 'You can contact Student healthcare (Feelgood) by email or by phone.\n' +
+        'student.goteborg@feelgood.se\n' +
+        '031-786 43 22 (Monday to Friday, 8 am to 5 pm)\n' +
+        'If you have a Swedish personal identity number and BankID, you can use the Feelgood app. Download from\n' +
+        'App Store\n' +
+        'or\n' +
+        'Google Play\n' +
+        '.\n' +
+        'Cancellations\n' +
+        'Cancellations\n' +
+        'must be made by phone or e-mail at least 24 hours before the scheduled visit. No-shows will be charged. To cancel, call 031-786 43 22 (on weekdays) or email\n' +
+        'student.goteborg@feelgood.se\n' +
+        '.',
+      source: 'page-000-Student healthcare.txt',
+      chunkIndex: 5
+    }
+  },
+  {
+    id: 'dcacbbf5-ef6d-46c2-b5ce-3dc995fba474',
+    version: 19,
+    score: 0.5124787,
+    payload: {
+      text: 'Online placement test',
+      source: 'page-018-Basic Swedish for international students.txt',
+      chunkIndex: 18
+    }
+  },
+  {
+    id: '1992ffc4-04f5-4403-b5bc-27d612e2f501',
+    version: 18,
+    score: 0.50346816,
+    payload: {
+      text: 'If you have any questions or would like to talk about study support, the quickest way to reach us is by e-mail. You can also call us if you prefer that.\n' +
+        'Please note.\n' +
+        'The office for disability study support are currently experiencing longer processing times. Your application will be processed as soon as possible. Thank you for your patience.\n' +
+        'Email\n' +
+        'pedagogisktstod@gu.se\n' +
+        'Phone hours\n' +
+        'Monday, Tuesday and Friday 9.00-10.00\n' +
+        '+46 31\n' +
+        '786 69 00\n' +
+        'Please note!\n' +
+        'The phone hours are closed 7-8 September.',
+      source: 'page-017-Disability study support.txt',
+      chunkIndex: 36
+    }
+  }
+]
+
+=== Query: Feelgood phone number ===
+[
+  {
+    id: 'd0b9be88-f17a-473f-9d96-7a6a849fa1b5',
+    version: 1,
+    score: 0.67314637,
+    payload: {
+      text: 'You can contact Student healthcare (Feelgood) by email or by phone.\n' +
+        'student.goteborg@feelgood.se\n' +
+        '031-786 43 22 (Monday to Friday, 8 am to 5 pm)\n' +
+        'If you have a Swedish personal identity number and BankID, you can use the Feelgood app. Download from\n' +
+        'App Store\n' +
+        'or\n' +
+        'Google Play\n' +
+        '.\n' +
+        'Cancellations\n' +
+        'Cancellations\n' +
+        'must be made by phone or e-mail at least 24 hours before the scheduled visit. No-shows will be charged. To cancel, call 031-786 43 22 (on weekdays) or email\n' +
+        'student.goteborg@feelgood.se\n' +
+        '.',
+      source: 'page-000-Student healthcare.txt',
+      chunkIndex: 5
+    }
+  },
+  {
+    id: 'df96e27f-c155-42ed-9f26-4ec005f9066f',
+    version: 18,
+    score: 0.5883533,
+    payload: {
+      text: 'Applying for and being granted study support',
+      source: 'page-017-Disability study support.txt',
+      chunkIndex: 18
+    }
+  },
+  {
+    id: '75a3b2e6-b469-4fc3-b07f-024855e088e0',
+    version: 9,
+    score: 0.585006,
+    payload: {
+      text: 'This is frequently found in the Contact, Help or About pages.',
+      source: 'page-008-The structured search process.txt',
+      chunkIndex: 37
+    }
+  },
+  {
+    id: '14b9f049-b3a9-4a59-bbbf-029c469ca7a1',
+    version: 1,
+    score: 0.57439077,
+    payload: {
+      text: 'At the University Church you can talk about everything that is going on in your life, whenever you need to. You are welcome regardless of your beliefs. The counselling is free of charge, no records are kept and those who work at the University Church are bound by a duty of confidentiality.',
+      source: 'page-000-Student healthcare.txt',
+      chunkIndex: 15
+    }
+  },
+  {
+    id: '84099b0d-78aa-4d8f-b037-126a7f6b501a',
+    version: 4,
+    score: 0.5696594,
+    payload: {
+      text: 'Servicecenter can help you with\n' +
+        "Servicecenter can help you navigate the University of Gothenburg -  our buildings as well as our organisation. If you don't know who to contact with a question, contact Servicecenter and we will guide you.\n" +
+        'Servicecenter can also help you with:',
+      source: 'page-003-Servicecenter.txt',
+      chunkIndex: 1
+    }
+  }
+]
