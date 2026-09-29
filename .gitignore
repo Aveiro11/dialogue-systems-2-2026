@@ -136,3 +136,4 @@ tools/custom-gcl.hash
 !tsc/testdata/submoduleTriaged.txt
 
 **/credentials.ts
+**/azure.ts
