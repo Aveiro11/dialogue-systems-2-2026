@@ -157,6 +157,14 @@ describe("DME tests", () => {
     ]);
   });
 
+  describe("Task 2a: not understood", () => {
+    runTest([
+      { speaker: "sys", message: "Hello! You can ask me anything!" },
+      { speaker: "usr", message: "bla bla" },
+      { speaker: "sys", message: "Sorry, I don't understand." },
+    ]);
+  });
+
   describe("system answer from database", () => {
     runTest([
       { speaker: "sys", message: "Hello! You can ask me anything!" },
