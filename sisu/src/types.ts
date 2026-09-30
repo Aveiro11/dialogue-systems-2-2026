@@ -28,7 +28,7 @@ export type Question = WhQuestion;
 type WhQuestion = { type: "whq"; predicate: string };
 
 interface OtherMove {
-  type: "greet" | "request";
+  type: "greet" | "request" | "icm_und_neg";
   content: null | string;
 }
 interface AnswerMove {
@@ -45,6 +45,7 @@ export type Move = OtherMove | AnswerMove | AskMove;
 export type Action = {
   type:
     | "greet"
+    | "icm_und_neg" // negative understanding feedback
     | "respond" // not to be used in plans
     | "raise"
     | "findout"
