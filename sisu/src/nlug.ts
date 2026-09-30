@@ -46,6 +46,7 @@ const nlgMapping: NLGMapping = [
   [{ type: "ask", content: WHQ("booking_course") }, "Which course?"],
   [{ type: "ask", content: WHQ("booking_day") }, "Which day?"],
   [{ type: "icm_und_neg", content: null }, "Sorry, I don't understand."], // Task 2a
+  [{ type: "icm_con_neg", content: null }, "I didn't hear anything."], // VG-A
   [{ type: "greet", content: null }, "Hello! You can ask me anything!"],
   [
     {
@@ -61,7 +62,7 @@ const nlgMapping: NLGMapping = [
     },
     "The lecture is in G212.",
   ],
-    [
+  [
     {
       type: "answer",
       content: { predicate: "booking_room", argument: "J440" },
@@ -84,8 +85,29 @@ export function nlg(moves: Move[]): string {
   return utterance;
 }
 
-/** NLU mapping function can be replaced by statistical NLU
- */
+// /** NLU mapping function can be replaced by statistical NLU
+//  */
+// export function nlu(utterance: string): Move[] {
+//   return nluMapping[utterance.toLowerCase()] || [];
+// }
+
+
+/** Lowercase and remove punctuation so "Friday" matches "friday" */
+function normalise(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9' ]/g, "")
+    .trim();
+}
+const normalisedMapping: NLUMapping = {};
+for (const [key, moves] of Object.entries(nluMapping)) {
+  normalisedMapping[normalise(key)] = moves;
+}
+
 export function nlu(utterance: string): Move[] {
-  return nluMapping[utterance.toLowerCase()] || [];
+  // VG-A: an empty utterance means the user said nothing (silence)
+  if (utterance.trim() === "") {
+    return [{ type: "no_input", content: null }];
+  }
+  return normalisedMapping[normalise(utterance)] || [];
 }
