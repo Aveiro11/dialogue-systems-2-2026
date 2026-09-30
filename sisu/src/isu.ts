@@ -93,8 +93,10 @@ const dmMachine = setup({
                     lastUserMoves: nlu(event.value[0].utterance),
                   })),
                 },
+                // VG-A: silence. speechstate sends ASR_NOINPUT and then
+                // LISTEN_COMPLETE, so I stored a "no_input" move here.
                 ASR_NOINPUT: {
-                  // TODO
+                  actions: assign({ lastUserMoves: () => nlu("") }),
                 },
               },
             },

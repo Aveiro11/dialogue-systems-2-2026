@@ -117,6 +117,7 @@ export const dme = setup({
         },
         Integrate: {
           always: [
+            isuTransition("DowndateQUD", "integrate_no_contact"), // VG-A
             isuTransition("DowndateQUD", "integrate_no_understanding"),
             isuTransition("DowndateQUD", "integrate_usr_request"),
             isuTransition("DowndateQUD", "integrate_sys_ask"),
