@@ -28,7 +28,7 @@ export type Question = WhQuestion;
 type WhQuestion = { type: "whq"; predicate: string };
 
 interface OtherMove {
-  type: "greet" | "request" | "icm_und_neg";
+  type: "greet" | "request" | "icm_und_neg" | "no_input";
   content: null | string;
 }
 interface AnswerMove {
@@ -46,6 +46,7 @@ export type Action = {
   type:
     | "greet"
     | "icm_und_neg" // negative understanding feedback
+    | "icm_con_neg" // VG-A: negative contact feedback
     | "respond" // not to be used in plans
     | "raise"
     | "findout"

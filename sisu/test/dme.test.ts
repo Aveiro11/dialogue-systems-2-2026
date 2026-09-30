@@ -206,4 +206,29 @@ describe("DME tests", () => {
   //     { speaker: "sys", message: "The lecture is in G212." },
   //   ]);
   // });
+
+    /** VG-A: negative CONTACT feedback (the user said nothing)*/
+  describe("VG-A: silence at the start", () => {
+    runTest([
+      { speaker: "sys", message: "Hello! You can ask me anything!" },
+      { speaker: "usr", message: "" }, //  the user said nothing
+      { speaker: "sys", message: "I didn't hear anything." },
+    ]);
+  });
+
+  describe("VG-A: silence, then repeated question, then answer", () => {
+    runTest([
+      { speaker: "sys", message: "Hello! You can ask me anything!" },
+      { speaker: "usr", message: "Where is the lecture?" },
+      { speaker: "sys", message: "Which day?" },
+      { speaker: "usr", message: "" },
+      { speaker: "sys", message: "I didn't hear anything. Which day?" },
+      { speaker: "usr", message: "Friday" },
+      { speaker: "sys", message: "Which course?" },
+      { speaker: "usr", message: "" },
+      { speaker: "sys", message: "I didn't hear anything. Which course?" },
+      { speaker: "usr", message: "Dialogue Systems 2" },
+      { speaker: "sys", message: "The lecture is in G212." },
+    ]);
+  });
 });
