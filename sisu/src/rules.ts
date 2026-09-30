@@ -63,8 +63,8 @@ export const rules: Rules = {
     }
   },
 
-    /**Task 2a: the NLU returned no moves = the user was not understood
-   *  I put an "icm_und_neg" action on the agenda. */
+  /**Task 2a: the NLU returned no moves = the user was not understood
+ *  I put an "icm_und_neg" action on the agenda. */
   integrate_no_understanding: ({ is }) => {
     if (is.shared.lu!.speaker === "usr" && is.shared.lu!.moves.length === 0) {
       const icm: Action = { type: "icm_und_neg", content: null };
@@ -82,6 +82,10 @@ export const rules: Rules = {
       for (const move of is.shared.lu!.moves) {
         if (move.type === "ask") {
           const q = move.content;
+          // Task 2b: a repeated question must not be added to QUD twice
+          if (is.shared.qud.some((x) => objectsEqual(x, q))) {
+            return undefined;
+          }
           return () => ({
             ...is,
             shared: {
@@ -334,7 +338,7 @@ export const rules: Rules = {
     }
   },
 
-    /** greet + Task 2a/2b negative understanding feedback */
+  /** greet + Task 2a/2b negative understanding feedback */
   select_other: ({ is }) => {
     const top = is.private.agenda[0];
     if (top && top.type === "greet") {
