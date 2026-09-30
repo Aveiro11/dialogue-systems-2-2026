@@ -28,7 +28,7 @@ export type Question = WhQuestion;
 type WhQuestion = { type: "whq"; predicate: string };
 
 interface OtherMove {
-  type: "greet" | "request" | "icm_und_neg" | "no_input";
+  type: "greet" | "request" | "icm_und_neg" | "icm_con_neg" | "no_input";
   content: null | string;
 }
 interface AnswerMove {
@@ -44,13 +44,13 @@ export type Move = OtherMove | AnswerMove | AskMove;
 
 export type Action = {
   type:
-    | "greet"
-    | "icm_und_neg" // negative understanding feedback
-    | "icm_con_neg" // VG-A: negative contact feedback
-    | "respond" // not to be used in plans
-    | "raise"
-    | "findout"
-    | "consultDB";
+  | "greet"
+  | "icm_und_neg" // negative understanding feedback
+  | "icm_con_neg" // VG-A: negative contact feedback
+  | "respond" // not to be used in plans
+  | "raise"
+  | "findout"
+  | "consultDB";
   content: null | Question;
 };
 
