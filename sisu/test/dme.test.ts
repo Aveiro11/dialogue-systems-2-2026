@@ -178,6 +178,25 @@ describe("DME tests", () => {
     ]);
   });
 
+  /** Task 2c*/
+  describe("Task 2c: final result after repeated questions", () => {
+    runTest([
+      { speaker: "sys", message: "Hello! You can ask me anything!" },
+      { speaker: "usr", message: "Where is the lecture?" },
+      { speaker: "sys", message: "Which day?" },
+      { speaker: "usr", message: "bla bla" },
+      { speaker: "sys", message: "Sorry, I don't understand. Which day?" },
+      { speaker: "usr", message: "bla bla" },
+      { speaker: "sys", message: "Sorry, I don't understand. Which day?" },
+      { speaker: "usr", message: "Thursday" },
+      { speaker: "sys", message: "Which course?" },
+      { speaker: "usr", message: "bla bla" },
+      { speaker: "sys", message: "Sorry, I don't understand. Which course?" },
+      { speaker: "usr", message: "Dialogue Systems 2" },
+      { speaker: "sys", message: "The lecture is in J440." },
+    ]);
+  });
+
   describe("system answer from database", () => {
     runTest([
       { speaker: "sys", message: "Hello! You can ask me anything!" },
