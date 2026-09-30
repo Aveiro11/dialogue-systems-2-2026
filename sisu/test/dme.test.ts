@@ -125,13 +125,13 @@ describe("DME tests", () => {
     });
   };
 
-  // describe("system answer from beliefs", () => {
-  //   runTest([
-  //     { speaker: "sys", message: "Hello! You can ask me anything!" },
-  //     { speaker: "usr", message: "What's your favorite food?" },
-  //     { speaker: "sys", message: "Pizza." },
-  //   ]);
-  // });
+  describe("system answer from beliefs", () => {
+    runTest([
+      { speaker: "sys", message: "Hello! You can ask me anything!" },
+      { speaker: "usr", message: "What's your favorite food?" },
+      { speaker: "sys", message: "Pizza." },
+    ]);
+  });
     /**Depends on the day*/
   describe("Task 1: room on Friday", () => {
     runTest([
@@ -197,13 +197,13 @@ describe("DME tests", () => {
     ]);
   });
 
-  describe("system answer from database", () => {
-    runTest([
-      { speaker: "sys", message: "Hello! You can ask me anything!" },
-      { speaker: "usr", message: "Where is the lecture?" },
-      { speaker: "sys", message: "Which course?" },
-      { speaker: "usr", message: "Dialogue Systems 2" },
-      { speaker: "sys", message: "The lecture is in G212." },
-    ]);
-  });
+  // describe("system answer from database", () => {
+  //   runTest([
+  //     { speaker: "sys", message: "Hello! You can ask me anything!" },
+  //     { speaker: "usr", message: "Where is the lecture?" },
+  //     { speaker: "sys", message: "Which course?" },
+  //     { speaker: "usr", message: "Dialogue Systems 2" },
+  //     { speaker: "sys", message: "The lecture is in G212." },
+  //   ]);
+  // });
 });
