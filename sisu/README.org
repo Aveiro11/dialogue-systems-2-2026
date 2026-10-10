@@ -1,0 +1,53 @@
+* SISU: [[https://github.com/vladmaraev/speechstate][SpeechState]] meets Information State Update (ISU)
+
+The repo contains an ISU implementation described in: [[https://aclanthology.org/2025.clasp-main.3/][Combining Information State Update, Harel Statecharts and LLMs for controllable and flexible Conversational AI]] (Maraev et al., CLASP 2025)
+
+It also contains a partial implementation of the dialogue system IBiS1 (Larsson, Staffan (2002): [[https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=975e3dfccc0cf203565ea7fb370428743c1347a6][Issue-based Dialogue Management]]), including a small domain.
+
+Prerequisites:
+1. Install NodeJS (LTS version).
+2. Install all dependencies:
+   #+begin_src 
+     npm i
+   #+end_src
+3. Create =src/azure.ts=, insert your Azure key where marked. This is required for running the system with speech (in browser frontend), but not for automated testing (in backend).
+   #+begin_src 
+     export const KEY = "<your_key_goes_here>"
+   #+end_src
+   
+
+Run SISU:
+1. Run backend in development mode:
+   #+begin_src 
+     npm run dev
+   #+end_src
+2. Open the link that was shown in your browser, e.g. http://localhost:5173/
+3. Allow access to you microphone.
+4. When you unblock the pop-up window, and reload the page you will see the state inspector; this can be useful during development.
+
+Run automated tests:
+#+begin_src
+ npm run test
+#+end_src
+
+
+
+** Cite this work:
+
+#+begin_src 
+@inproceedings{maraev_combining_2025,
+	author = {Vladislav Maraev and Alexander Berman and Staffan Larsson},
+	title = {Combining Information State Update, Harel Statecharts and {LLM}s for controllable and flexible Conversational {AI}},
+	editor = {Ilinykh, Nikolai  and
+      Appelgren, Mattias  and
+      Lagerstedt, Erik},
+	booktitle = {Proceedings of the 2025 CLASP Conference on Language models And RePresentations (LARP)},
+	year = {2025},
+	address = {Gothenburg, Sweden},
+	publisher = {Association for Computational Linguistics},
+	url = {https://aclanthology.org/2025.clasp-main.3/},
+	pages = {28--37},
+	ISBN = {979-8-89176-249-7},
+	abstract = {The rise of LLM-based approaches to dialogue systems has created an increased need for controllable dialogue. This paper addresses this need by presenting an implementation of a dialogue system based on information state update approach according to Larsson (2002). This enables the integration of rule-based handling of dialogue, expressed by Harel{'}s statecharts (1987), and Larsson{'}s theoretical account grounded in theories of dialogue, expressed by information state update rules. We demonstrate how our approach applies to dialogue domains involving form-filling. We also propose how LLMs can be employed to inject domain knowledge and be used in various components of a hybrid dialogue system, while maintaining control over the overall dialogue logic.}
+}
+#+end_src

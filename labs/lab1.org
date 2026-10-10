@@ -91,7 +91,7 @@ interface as well as the docker-compose file for server which you can run locall
 
 *** Running the server
 
-See in the [[file:~/Teaching/ds-2/dialogue-systems-2-2026/tutorials/rag.org][RAG tutorial]].  There is also a ~/rag/docker-compose.yml~ file
+See in the [[file:../tutorials/rag.org][RAG tutorial]].  There is also a ~/rag/docker-compose.yml~ file
 that you can use.
 
 The data will be stored locally, in the ~/rag/qdrant_data/~ folder.
